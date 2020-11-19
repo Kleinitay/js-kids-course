@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>האתר של איתי</title>
+    <style>
+        h1 {
+            font-size: 100px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 900;
+        }
+
+        p {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .sub-headline {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        h1.main-title {
+            text-align: center;
+        }
+
+        table.specific {
+            border-style: dotted;
+            border-width: 2px;
+        }
+
+        table.specific:hover {
+            border-style: dashed;
+            border-width: 10px;
+        }
+
+        .profile-pic {
+            display: block;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+            height: 215px;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 20%;
+            height: 100%;
+            direction: rtl;
+            background-color: lightblue;
+        }
+
+        .main {
+            margin-right: 20%;
+            direction: rtl;
+            background-color: lightgray;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <ul>
+            <li><a href="index.html">דף הבית</a></li>
+            <li><a href="guesses.html">משחק ניחושים</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <h1 class="main-title">משחק הניחושים הגדול</h1>
+        <button onclick="startGame()">משחק חדש</button>
+        <br /> 
+        <br /> 
+        <div>
+            <label>נחש את המספר</label>
+            <input id="guess" />
+            <button id="guessPress" onclick="onSubmit()">מה אתה אומר?</button>
+        </div>
+        <div id=answer></div>
+        <br />
+        <div>
+            <h2>איך משחקים?</h2>
+            <p>המחשב בוחר מספר מ - 1 עד 100. אתם צריכים לנחש את המספר והמחשב יגיד אם המספר שניחשתם גבוה או נמוך ממה שהוא בחר</p>
+            <p>נסו לנחש בכמה שפחות ניחושים</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let inputField = document.getElementById("guess");
+        inputField.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                onSubmit();
+            }
+        });
+
+        let selectedNumber = Math.floor(Math.random() * 100);
+        function startGame() {
+            selectedNumber = Math.floor(Math.random() * 100);
+             let answer = document.getElementById("answer");
+             answer.textContent = "";
+        }
+
+        function onSubmit() {
+            let input = document.getElementById("guess");
+            let answer = document.getElementById("answer");
+            let guess = parseInt(input.value);
+            if (guess === selectedNumber) {
+                answer.style.color = "green";
+                answer.textContent = "נכון!!";
+            } else if (guess < selectedNumber) {
+                answer.style.color = "red";
+                answer.textContent = "נמוך מדי";
+            } else if (guess > selectedNumber) {
+                answer.style.color = "red";
+                answer.textContent = "גבוה מדי";
+            }
+        }     
+    </script>
+</body>
+
+</html>
