@@ -54,3 +54,19 @@ for (item of array) {
     newArray.push(item * item);
 }
 
+
+function game() {
+    const computerNumber = Math.floor(Math.random() * 100);
+
+    while (true) {
+        const userGuess = parseInt(prompt('Guess a number (1 - 100)'));
+        if (computerNumber === userGuess) {
+            console.log('You are right!!');
+            break;
+        } else if (computerNumber > userGuess) {
+            console.log('Too low')
+        } else {
+            console.log('Too high');
+        }
+    }
+}
