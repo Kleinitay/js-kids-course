@@ -89,11 +89,16 @@
             }
         });
 
-        let selectedNumber = Math.floor(Math.random() * 100);
+        let selectedNumber = getReandomInteger(100);
+        
         function startGame() {
-            selectedNumber = Math.floor(Math.random() * 100);
+            selectedNumber = getReandomInteger(100);
              let answer = document.getElementById("answer");
              answer.textContent = "";
+        }
+
+        function getReandomInteger(maxValue) {
+            return Math.floor(Math.random() * maxValue);
         }
 
         function onSubmit() {
