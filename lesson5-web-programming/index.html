@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web develpment is cool!!</title>
+    <style>
+
+        .main {
+            margin: 20%;
+            background-color: lightgray;
+            top: 0;
+            display: block;
+            padding: 20px;
+            height: 100%;
+            border-style: groove;
+            border-width: 10px;
+            height: 100%;
+        }
+
+        .part {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="part">
+            <button onclick="buttonClick()">This is a button</button>
+        </div>
+        <hr />
+        <div class="part">
+            <button onclick="changeText()">Change the text</button>
+            <p id='someText'>This is lame</p>
+        </div>
+        <hr />
+        <div class="part">
+            <button id='theButton' onclick="changeStyle()">Change the border</button>
+        </div>
+        <hr />
+        <div class="part">
+            <button id='the2Button' onmouseover="changePlace()">Click me!</button>
+        </div>
+        <hr />
+        <div class="part">
+            <label>The input: </label>
+            <input id='theInput'/>
+            <button onclick="getValue()">Get value</button>
+        </div>
+        
+    </div>
+
+        <script type="text/javascript">
+            function buttonClick() {
+                alert('Button clicked!!!')
+            }
+
+            function changeText() {
+                let theText = document.getElementById("someText");
+                theText.textContent = 'This is cool!';
+            }
+
+            function changeStyle() {
+                const newBorderWidth = Math.floor(Math.random() * 50); 
+                let theButton = document.getElementById('theButton');
+                theButton.style.borderWidth = `${newBorderWidth}px`;
+            }
+
+            let buttonMarginLeft = 0;
+            function changePlace() {
+                let the2Button = document.getElementById('the2Button');
+                console.log(the2Button.style.marginLeft)
+                buttonMarginLeft = (buttonMarginLeft + 200) % 1000;
+                the2Button.style.marginLeft = `${buttonMarginLeft}px`;
+            }
+
+            function getValue() {
+                let input = document.getElementById("theInput");
+                alert(input.value);
+            }
+        </script>
+</body>
+
+</html>
