@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web develpment is cool!!</title>
+    <style>
+        .main {
+            margin: 20%;
+            background-color: lightgray;
+            top: 0;
+            display: block;
+            padding: 20px;
+            height: 100%;
+            border-style: groove;
+            border-width: 10px;
+            height: 100%;
+        }
+
+        .part {
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <canvas id="myCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;"></canvas>
+        <button onclick="drawSpaceship()">draw</button>
+    </div>
+
+    <script type="text/javascript">
+        function drawSpaceship() {
+            const spaceship = new Spaceship(200, 200, 100);
+            const secondSpaceship = new Spaceship(300, 400, 40);
+            const canvas = document.getElementById('myCanvas');
+            spaceship.draw(canvas);
+            secondSpaceship.draw(canvas);
+            setInterval(function () {
+                let ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, 1000, 500)
+                spaceship.moveRight(5);
+                spaceship.draw(canvas);
+            }, 100);
+        }
+
+        class Spaceship {
+            positionX = 0;
+            positionY = 0;
+
+            constructor(x, y, size) {
+                this.positionX = x;
+                this.positionY = y;
+                this.size = size;
+                this.blowenUp = false;
+            }
+
+            draw(canvas) {
+                let ctx = canvas.getContext("2d");
+                ctx.beginPath();
+                if (this.blowenUp) {
+                    ctx.strokeStyle = "#FF0000"; // RGB
+                    ctx.moveTo(this.positionX, this.positionY);
+                    ctx.lineTo(this.positionX - this.size, this.positionY);
+                    ctx.moveTo(this.positionX, this.positionY);
+                    ctx.lineTo(this.positionX - this.size, this.positionY + this.size);
+                    ctx.moveTo(this.positionX, this.positionY);
+                    ctx.lineTo(this.positionX - this.size, this.positionY -  this .size);
+                    ctx.moveTo(this.positionX, this.positionY);
+                    ctx.lineTo(this.positionX + this.size, this.positionY + this.size);
+                    ctx.moveTo(this.positionX, this.positionY);
+                    ctx.lineTo(this.positionX + this.size, this.positionY - this.size);
+                    ctx.moveTo(this.positionX, this.positionY);
+                    ctx.lineTo(this.positionX + this.size, this.positionY);
+                } else {
+                    ctx.lineWidth = 10;
+                    ctx.arc(this.positionX, this.positionY, this.size, 0, 2 * Math.PI);
+                    ctx.moveTo(this.positionX - this.size - 20, this.positionY);
+                    ctx.lineTo(this.positionX + this.size + 20, this.positionY);
+                }
+                
+                
+                
+
+                ctx.stroke();
+            }
+
+            moveRight(howMuch) {
+                this.positionX += howMuch; // this.positionX = this.positionX + howMuch
+            }
+
+            blowup() {
+                this.blowenUp = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

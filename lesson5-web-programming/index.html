@@ -18,7 +18,7 @@
         }
 
         .part {
-            margin: 20px;
+            margin: 100px;
         }
     </style>
 </head>
@@ -28,19 +28,44 @@
         <div class="part">
             <button onclick="buttonClick()">This is a button</button>
         </div>
+
+
+
+
+
+
         <hr />
         <div class="part">
             <button onclick="changeText()">Change the text</button>
             <p id='someText'>This is lame</p>
         </div>
+
+
+
+
+
+
+
         <hr />
         <div class="part">
             <button id='theButton' onclick="changeStyle()">Change the border</button>
         </div>
+
+
+
+
+
+
         <hr />
         <div class="part">
             <button id='the2Button' onmouseover="changePlace()">Click me!</button>
         </div>
+
+
+
+
+
+
         <hr />
         <div class="part">
             <label>The input: </label>
@@ -55,16 +80,43 @@
                 alert('Button clicked!!!')
             }
 
+
+
+
+
+
+
+
+
+
             function changeText() {
                 let theText = document.getElementById("someText");
                 theText.textContent = 'This is cool!';
             }
+
+
+
+
+
+
+
+
+
+
 
             function changeStyle() {
                 const newBorderWidth = Math.floor(Math.random() * 50); 
                 let theButton = document.getElementById('theButton');
                 theButton.style.borderWidth = `${newBorderWidth}px`;
             }
+
+
+
+
+
+
+
+
 
             let buttonMarginLeft = 0;
             function changePlace() {
@@ -73,6 +125,12 @@
                 buttonMarginLeft = (buttonMarginLeft + 200) % 1000;
                 the2Button.style.marginLeft = `${buttonMarginLeft}px`;
             }
+
+
+
+
+
+
 
             function getValue() {
                 let input = document.getElementById("theInput");
